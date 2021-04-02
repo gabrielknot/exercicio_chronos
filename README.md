@@ -1,3 +1,39 @@
+# Desafio_Chronos | CRUD - Cliente
+Projeto para criar, editar e remover clientes
+
+##### Link para teste: https://desafio-chronos.000webhostapp.com/
+
+Sumário
+=================
+<!--ts-->
+   * [Como testar no pc](#Como-testar-no-pc)
+        * [Requisitos](#Requisitos)
+            * [Laragon](#Laragon)
+   * [Laravel-Readme](#Implementações-de-Segurança)
+<!--te-->
+
+
+ #  Como testar no pc
+
+ ## Requisitos
+ 
+ ### Laragon
+Link para Dowload https://laragon.org/download/index.html
+Link direto para dowload da versão full: https://sourceforge.net/projects/laragon/files/releases/4.0/laragon-full.exe
+
+### PHP
+Link para Dowload do PHP 7.4.zip para windows https://windows.php.net/downloads/releases/php-7.4.16-Win32-vc15-x64.zip
+
+### Mysql
+
+## Dowload aplicao em git
+## Adicionando no laragon www
+## Configurando Aplicacao
+## Iniciando Laragon
+## Iniciando serve
+## Testando
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
