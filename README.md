@@ -17,22 +17,45 @@ Sumário
 
  ## Requisitos
  
+ ### Composer
+ Link para a pagina dedowload: https://getcomposer.org/download/
+ Link para dowload direto: https://getcomposer.org/Composer-Setup.exe
+ 
  ### Laragon
 Link para Dowload https://laragon.org/download/index.html
-Link direto para dowload da versão full: https://sourceforge.net/projects/laragon/files/releases/4.0/laragon-full.exe
+Link direto para dowload direto da versão full: https://sourceforge.net/projects/laragon/files/releases/4.0/laragon-full.exe
 
 ### PHP
 Link para Dowload do PHP 7.4.zip para windows https://windows.php.net/downloads/releases/php-7.4.16-Win32-vc15-x64.zip
 
-### Mysql
+## Dowload da aplicao
+Clone o projeto para pasta www do laragon através do comando: git clone, ou baixando o arquivo zip do projeto e extrando para a pasta www do 
+No pagina do projeto: https://github.com/lucasdantas2014/desafio_chronos
 
-## Dowload aplicao em git
-## Adicionando no laragon www
 ## Configurando Aplicacao
-## Iniciando Laragon
-## Iniciando serve
-## Testando
+Instalando os programas acima citados e a pasta do projeto devidamente localizad:
+1. Inicie o Laragon
+2. execute o codigo abaixo para baixar as dependencias
+3. composer install --no-scripts
+4. Na pasta do projeto, copie e cole o arquivo .env.example e renomei a copia para .env
+5. Abra o aquivo .env no editor de texto de sua preferência e coloque os dados do seu banco de dados
+6. Exxecute o comando abaixo para criar uma nova chave para sua aplicacao 
+7. Execute o comando abaixo para que as tabelas do banco de dados sejam criadas
 
+## Inicie o servidor
+Com o projeto devidamente configurado execute o comando:
+php artisan serve
+
+## Acessando a aplicacao
+Por padrão o projeto será iniciado no seguinte link:
+localhost:8000/public/
+
+# Funcionalidades do sistema
+
+## Testando
+# Criar Cliente
+# Editar Cliente
+# Remover Cliente
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
