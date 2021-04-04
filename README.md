@@ -46,22 +46,23 @@ Agora, vá no laragon e selecione a versão do PHP 7.4: Clique com o botão dire
 
 
 ### Composer
-Link para a pagina dedowload: https://getcomposer.org/download/
+Link para a pagina de dowload: https://getcomposer.org/download/
 Link para dowload direto: https://getcomposer.org/Composer-Setup.exe
 
-Atente para no momento de seleciona o PHP, selecione o php.exe do PHP 7.4 que foi adicionado no laragon, observe a imagem abaixo:
+Atente para que no momento de seleciona o PHP, selecione o php.exe do PHP 7.4 que foi adicionado no laragon, observe a imagem abaixo:
 ![composer select php](https://user-images.githubusercontent.com/21109930/113493782-eb72e180-94b8-11eb-9fee-1f9a07699f0b.png)
 ![php selecionado composer](https://user-images.githubusercontent.com/21109930/113493786-f299ef80-94b8-11eb-87f1-8cf898cb3dbf.png)
 
 ## Dowload da Aplicação
-Clone o projeto para pasta www do laragon através do comando: git clone, ou baixando o arquivo zip do projeto e extrando para a pasta www do 
+Clone o projeto para pasta www do laragon através do comando: git clone, ou baixando o arquivo zip do projeto e extraindo para a pasta www do 
 No pagina do projeto: https://github.com/lucasdantas2014/desafio_chronos
 ![dowload_do_projeto_no_git](https://user-images.githubusercontent.com/21109930/113493820-355bc780-94b9-11eb-8313-6eb4d53898c8.png)
 ![Extraindo projeto para o laragon](https://user-images.githubusercontent.com/21109930/113493807-1f4e0700-94b9-11eb-9112-319ab5beaafb.png)
 
 
 ## Configurando Aplicacao
-Instalando os programas acima citados e a pasta do projeto devidamente localizad:
+Instalando os programas a cima citados e a pasta do projeto devidamente localizada:
+
 1. Inicie o Laragon
 
 ![iniciar laragon](https://user-images.githubusercontent.com/21109930/113493846-9a172200-94b9-11eb-9c03-616e756132bf.png)
@@ -73,7 +74,7 @@ Instalando os programas acima citados e a pasta do projeto devidamente localizad
 
 ![acesse_a_pasta_do_projeto](https://user-images.githubusercontent.com/21109930/113494003-d39c5d00-94ba-11eb-9552-e860bd1b1031.png)
 
-4. execute o codigo abaixo para baixar as dependencias
+4. execute o código abaixo para baixar as dependências
 
 ![composer_install](https://user-images.githubusercontent.com/21109930/113493938-625caa00-94ba-11eb-9c14-28873e37bbec.png)
 
@@ -96,11 +97,11 @@ OBS: Caso você já tenha um SGBD instalado e configurado na sua maquina, você 
 
 ![selecionando a versao do php no laragon](https://user-images.githubusercontent.com/21109930/113494113-d77caf00-94bb-11eb-943c-9c4c8f300fe4.png)
 
-7. Abra o aquivo .env no editor de texto de sua preferência e coloque os dados do seu banco de dados
+7. Abra o aquivo .env no editor de texto de sua preferência e coloque os dados do seu banco de dados 
 
 ![dados para serem ajustados](https://user-images.githubusercontent.com/21109930/113494043-2d048c00-94bb-11eb-92f3-4dc892ff551a.png)
 
-8. Exxecute o comando abaixo para criar uma nova chave para sua aplicacao 
+8. Execute o comando abaixo para criar uma nova chave para sua aplicação 
 
 ![gerar_key](https://user-images.githubusercontent.com/21109930/113494156-17439680-94bc-11eb-80c8-0621a7b81e7f.png)
 
