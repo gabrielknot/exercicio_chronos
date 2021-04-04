@@ -1,7 +1,7 @@
 # Desafio_Chronos | CRUD - Cliente
 Projeto para criar, editar e remover clientes
 
-##### Link para teste: https://desafio-chronos.000webhostapp.com/
+##### Link para testar a aplicação online: https://desafio-chronos.000webhostapp.com/
 
 Sumário
 =================
