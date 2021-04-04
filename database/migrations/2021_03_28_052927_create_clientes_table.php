@@ -17,10 +17,10 @@ class CreateClientesTable extends Migration
             $table->id();
             $table->string("email");
             $table->string("nome");
-            $table->unsignedBigInteger("cidade");
+            $table->unsignedBigInteger("cidade_id");
             $table->timestamps();
 
-            $table->foreign("cidade")->references("id")->on("cidades")->onUpdate("CASCADE");
+            $table->foreign("cidade_id")->references("id")->on("cidades")->onUpdate("CASCADE");
         });
     }
 

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateHobbiesTable extends Migration
 {
@@ -18,6 +19,14 @@ class CreateHobbiesTable extends Migration
             $table->string("nome");
             $table->timestamps();
         });
+        
+        DB::table("hobbies")->insert([
+            ["nome" => "Futebol"],
+            ["nome" => "Caminhada"],
+            ["nome" => "Pescar"],
+            ["nome" => "Ler livro"],
+            ["nome" => "Cozinhar"]
+        ]);
     }
 
     /**

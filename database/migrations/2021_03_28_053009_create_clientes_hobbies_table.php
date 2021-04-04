@@ -15,14 +15,16 @@ class CreateClientesHobbiesTable extends Migration
     {
         Schema::create('clientes_hobbies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("cliente");
-            $table->unsignedBigInteger("hobbie");
+            $table->unsignedBigInteger("cliente_id");
+            $table->unsignedBigInteger("hobbie_id");
             $table->timestamps();
 
-            $table->foreign("cliente")->references("id")->on("clientes")->onUpdate("CASCADE")->onDelete("CASCADE");
-            $table->foreign("hobbie")->references("id")->on("hobbies")->onUpdate("CASCADE")->onDelete("CASCADE");
+            $table->foreign("cliente_id")->references("id")->on("clientes")->onUpdate("CASCADE")->onDelete("CASCADE");
+            $table->foreign("hobbie_id")->references("id")->on("hobbies")->onUpdate("CASCADE")->onDelete("CASCADE");
         });
     }
+
+
 
     /**
      * Reverse the migrations.
