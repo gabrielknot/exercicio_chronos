@@ -136,7 +136,7 @@
 
         // Funcao de listar cidades quando for selecionado o estado
         $("#select_estados").change(function() {
-            $.get("/desafio_chronos-main/public/api/estado_id/cidades/" + this.value, function(cidades){
+            $.get("/exercicio_chronos-main/public/api/estado_id/cidades/" + this.value, function(cidades){
                 $("#select_cidades").empty();
                 $('#select_cidades').append("<option selected value='' disabled> Cidade </option>");
                 $.each(cidades, function(key, value){
