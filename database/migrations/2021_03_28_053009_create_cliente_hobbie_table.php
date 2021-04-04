@@ -13,7 +13,7 @@ class CreateClientesHobbiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('clientes_hobbies', function (Blueprint $table) {
+        Schema::create('cliente_hobbie', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("cliente_id");
             $table->unsignedBigInteger("hobbie_id");
