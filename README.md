@@ -63,31 +63,56 @@ No pagina do projeto: https://github.com/lucasdantas2014/desafio_chronos
 ## Configurando Aplicacao
 Instalando os programas acima citados e a pasta do projeto devidamente localizad:
 1. Inicie o Laragon
+
 ![iniciar laragon](https://user-images.githubusercontent.com/21109930/113493846-9a172200-94b9-11eb-9c03-616e756132bf.png)
-2. Entre no terminal do laragon  ![acessando terminal](https://user-images.githubusercontent.com/21109930/113493994-c41d1400-94ba-11eb-8de8-c5169c1d02a5.png)
+
+2. Entre no terminal do laragon  
+![acessando terminal](https://user-images.githubusercontent.com/21109930/113493994-c41d1400-94ba-11eb-8de8-c5169c1d02a5.png)
+
 3. Acesse a página do projeto
+
 ![acesse_a_pasta_do_projeto](https://user-images.githubusercontent.com/21109930/113494003-d39c5d00-94ba-11eb-9552-e860bd1b1031.png)
+
 4. execute o codigo abaixo para baixar as dependencias
+
 ![composer_install](https://user-images.githubusercontent.com/21109930/113493938-625caa00-94ba-11eb-9c14-28873e37bbec.png)
+
 5. Na pasta do projeto, copie e cole o arquivo .env.example e renomei a copia para .env
+
 ![crei o arquivo env no projeto](https://user-images.githubusercontent.com/21109930/113494013-eb73e100-94ba-11eb-99f9-66e7f5d0227d.png)
+
 6. Crie um banco de dados
     6.1 Acesse o database do laragon
+
 ![acessando database](https://user-images.githubusercontent.com/21109930/113494066-6a691980-94bb-11eb-8ca6-0418f3e2d4eb.png)
+
     6.2 Abra o sistema para gerenciar o banco de dados
+
 ![acessando database abrir](https://user-images.githubusercontent.com/21109930/113494085-997f8b00-94bb-11eb-8bdf-713ad63e229d.png)
+
 OBS: Caso você já tenha um SGBD instalado e configurado na sua maquina, você pode colocar o nome de usuario e senha do seu SGBD
+
     6.3 Crie um banco de dados
+
 ![selecionando a versao do php no laragon](https://user-images.githubusercontent.com/21109930/113494113-d77caf00-94bb-11eb-943c-9c4c8f300fe4.png)
+
 7. Abra o aquivo .env no editor de texto de sua preferência e coloque os dados do seu banco de dados
+
 ![dados para serem ajustados](https://user-images.githubusercontent.com/21109930/113494043-2d048c00-94bb-11eb-92f3-4dc892ff551a.png)
+
 8. Exxecute o comando abaixo para criar uma nova chave para sua aplicacao 
+
 ![gerar_key](https://user-images.githubusercontent.com/21109930/113494156-17439680-94bc-11eb-80c8-0621a7b81e7f.png)
+
 9. Execute o comando abaixo para que as tabelas do banco de dados sejam criadas
+
 ![php_migrate](https://user-images.githubusercontent.com/21109930/113494185-64276d00-94bc-11eb-9c1c-dc864bbd51de.png)
 
+
 ## Iniciando o Servidor
-Com o projeto devidamente configurado execute o comando: php artisan serve![php_serve](https://user-images.githubusercontent.com/21109930/113494187-71dcf280-94bc-11eb-837b-4e6b1dbae8c0.png)
+Com o projeto devidamente configurado execute o comando: php artisan serve
+
+![php_serve](https://user-images.githubusercontent.com/21109930/113494187-71dcf280-94bc-11eb-837b-4e6b1dbae8c0.png)
 
 
 ## Acessando a aplicacao
