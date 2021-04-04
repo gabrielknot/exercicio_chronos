@@ -9,6 +9,13 @@ Sumário
    * [Como testar no pc](#Como-testar-no-pc)
         * [Requisitos](#Requisitos)
             * [Laragon](#Laragon)
+            * [PHP](#PHP)
+            * [Composer](#Composer)
+        * [Dowload da Aplicacao](#Dowload-da-Aplicacao)
+        * [Configurando a Aplicação](#Configurando-a-Aplicação)   
+        * [Iniciando o Servidor](#Inicie-o-Servidor)
+        * [Acessando a Aplicação](#Acessando-a-Aplicação)
+   * [Funcionalidades do Sistema](#Funcionalidades-do-Sistema)  
    * [Laravel-Readme](#Implementações-de-Segurança)
 <!--te-->
 
@@ -17,9 +24,6 @@ Sumário
 
  ## Requisitos
  
- ### Composer
- Link para a pagina dedowload: https://getcomposer.org/download/
- Link para dowload direto: https://getcomposer.org/Composer-Setup.exe
  
  ### Laragon
 Link para Dowload https://laragon.org/download/index.html
@@ -28,34 +32,84 @@ Link direto para dowload direto da versão full: https://sourceforge.net/project
 ### PHP
 Link para Dowload do PHP 7.4.zip para windows https://windows.php.net/downloads/releases/php-7.4.16-Win32-vc15-x64.zip
 
-## Dowload da aplicao
+Mova o arquivo zip do PHP baixado para a pasta "C:/laragon/bin/php", conforme a imagem abaixo 
+![dowload php](https://user-images.githubusercontent.com/21109930/113493693-2de7ee80-94b8-11eb-8d3b-a9eb164e9579.png)
+
+Crie uma pasta com o mesmo nome do arquivo zip
+![criar_pasta](https://user-images.githubusercontent.com/21109930/113493711-5243cb00-94b8-11eb-9f5a-6eb21e366539.png)
+
+Extraia o arquivo zip baixado para a pasta criada
+![extraindo php para o laravel](https://user-images.githubusercontent.com/21109930/113493721-6982b880-94b8-11eb-8457-cfdfc0d57b71.png)
+
+Agora, vá no laragon e selecione a versão do PHP 7.4: Clique com o botão direito no laragon, vá em PHP e selecione a versão como na imagem abaixo:
+![selecionando a versao do php no laragon](https://user-images.githubusercontent.com/21109930/113493751-acdd2700-94b8-11eb-8fb7-b3944530cdab.png)
+
+
+### Composer
+Link para a pagina dedowload: https://getcomposer.org/download/
+Link para dowload direto: https://getcomposer.org/Composer-Setup.exe
+
+Atente para no momento de seleciona o PHP, selecione o php.exe do PHP 7.4 que foi adicionado no laragon, observe a imagem abaixo:
+![composer select php](https://user-images.githubusercontent.com/21109930/113493782-eb72e180-94b8-11eb-9fee-1f9a07699f0b.png)
+![php selecionado composer](https://user-images.githubusercontent.com/21109930/113493786-f299ef80-94b8-11eb-87f1-8cf898cb3dbf.png)
+
+## Dowload da Aplicação
 Clone o projeto para pasta www do laragon através do comando: git clone, ou baixando o arquivo zip do projeto e extrando para a pasta www do 
 No pagina do projeto: https://github.com/lucasdantas2014/desafio_chronos
+![dowload_do_projeto_no_git](https://user-images.githubusercontent.com/21109930/113493820-355bc780-94b9-11eb-8313-6eb4d53898c8.png)
+![Extraindo projeto para o laragon](https://user-images.githubusercontent.com/21109930/113493807-1f4e0700-94b9-11eb-9112-319ab5beaafb.png)
+
 
 ## Configurando Aplicacao
 Instalando os programas acima citados e a pasta do projeto devidamente localizad:
 1. Inicie o Laragon
-2. execute o codigo abaixo para baixar as dependencias
-3. composer install --no-scripts
-4. Na pasta do projeto, copie e cole o arquivo .env.example e renomei a copia para .env
-5. Abra o aquivo .env no editor de texto de sua preferência e coloque os dados do seu banco de dados
-6. Exxecute o comando abaixo para criar uma nova chave para sua aplicacao 
-7. Execute o comando abaixo para que as tabelas do banco de dados sejam criadas
+![iniciar laragon](https://user-images.githubusercontent.com/21109930/113493846-9a172200-94b9-11eb-9c03-616e756132bf.png)
+2. Entre no terminal do laragon  ![acessando terminal](https://user-images.githubusercontent.com/21109930/113493994-c41d1400-94ba-11eb-8de8-c5169c1d02a5.png)
+3. Acesse a página do projeto
+![acesse_a_pasta_do_projeto](https://user-images.githubusercontent.com/21109930/113494003-d39c5d00-94ba-11eb-9552-e860bd1b1031.png)
+4. execute o codigo abaixo para baixar as dependencias
+![composer_install](https://user-images.githubusercontent.com/21109930/113493938-625caa00-94ba-11eb-9c14-28873e37bbec.png)
+5. Na pasta do projeto, copie e cole o arquivo .env.example e renomei a copia para .env
+![crei o arquivo env no projeto](https://user-images.githubusercontent.com/21109930/113494013-eb73e100-94ba-11eb-99f9-66e7f5d0227d.png)
+6. Crie um banco de dados
+    6.1 Acesse o database do laragon
+![acessando database](https://user-images.githubusercontent.com/21109930/113494066-6a691980-94bb-11eb-8ca6-0418f3e2d4eb.png)
+    6.2 Abra o sistema para gerenciar o banco de dados
+![acessando database abrir](https://user-images.githubusercontent.com/21109930/113494085-997f8b00-94bb-11eb-8bdf-713ad63e229d.png)
+OBS: Caso você já tenha um SGBD instalado e configurado na sua maquina, você pode colocar o nome de usuario e senha do seu SGBD
+    6.3 Crie um banco de dados
+![selecionando a versao do php no laragon](https://user-images.githubusercontent.com/21109930/113494113-d77caf00-94bb-11eb-943c-9c4c8f300fe4.png)
+7. Abra o aquivo .env no editor de texto de sua preferência e coloque os dados do seu banco de dados
+![dados para serem ajustados](https://user-images.githubusercontent.com/21109930/113494043-2d048c00-94bb-11eb-92f3-4dc892ff551a.png)
+8. Exxecute o comando abaixo para criar uma nova chave para sua aplicacao 
+![gerar_key](https://user-images.githubusercontent.com/21109930/113494156-17439680-94bc-11eb-80c8-0621a7b81e7f.png)
+9. Execute o comando abaixo para que as tabelas do banco de dados sejam criadas
+![php_migrate](https://user-images.githubusercontent.com/21109930/113494185-64276d00-94bc-11eb-9c1c-dc864bbd51de.png)
 
-## Inicie o servidor
-Com o projeto devidamente configurado execute o comando:
-php artisan serve
+## Iniciando o Servidor
+Com o projeto devidamente configurado execute o comando: php artisan serve![php_serve](https://user-images.githubusercontent.com/21109930/113494187-71dcf280-94bc-11eb-837b-4e6b1dbae8c0.png)
+
 
 ## Acessando a aplicacao
 Por padrão o projeto será iniciado no seguinte link:
-localhost:8000/public/
+localhost:8000/desafio_chronos-main/public/
+![link](https://user-images.githubusercontent.com/21109930/113494265-1d864280-94bd-11eb-8927-6cdf00b5ed73.png)
 
 # Funcionalidades do sistema
+### Ver Clientes
+![lista_de_clientes](https://user-images.githubusercontent.com/21109930/113494373-fed47b80-94bd-11eb-85a5-2074c87f90cc.png)
 
-## Testando
-# Criar Cliente
-# Editar Cliente
-# Remover Cliente
+### Criar Cliente
+![cadastrar_cliente](https://user-images.githubusercontent.com/21109930/113494380-0a27a700-94be-11eb-9101-3952f6a1138b.png)
+![tela_cadastro](https://user-images.githubusercontent.com/21109930/113494432-802c0e00-94be-11eb-8350-4a754423e83c.png)
+
+### Editar Cliente
+![editar_cliente](https://user-images.githubusercontent.com/21109930/113494387-1c094a00-94be-11eb-87e6-f09be0205647.png)
+![tela_edicao](https://user-images.githubusercontent.com/21109930/113494444-8e7a2a00-94be-11eb-8103-80264d0cda1a.png)
+
+### Remover Cliente
+![remover_cliente](https://user-images.githubusercontent.com/21109930/113494390-27f50c00-94be-11eb-95b9-c36dd355415e.png)
+
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
