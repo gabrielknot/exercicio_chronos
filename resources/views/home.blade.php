@@ -6,8 +6,6 @@
         <div class="row">
             <div class="col">
 
-                <h1>Desafio_Chronos</h1>
-                <hr>
                 <div>
                     <a href="{{route("novo_cliente")}}" class="btn btn-primary">Cadastrar Cliente <i class="fa fa-plus"></i></a>
                 </div>
