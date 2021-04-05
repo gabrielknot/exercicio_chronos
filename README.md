@@ -73,12 +73,13 @@ Instalando os programas a cima citados e a pasta do projeto devidamente localiza
 
 ![acessando terminal](https://user-images.githubusercontent.com/21109930/113493994-c41d1400-94ba-11eb-8de8-c5169c1d02a5.png)
 
-<strong> 3. Acesse a página do projeto </strong>
+<strong> 3. No terminal, acesse a página do projeto </strong>
     
     cd exercicio-chronos-main
-<br>
-![acessando pasta](https://user-images.githubusercontent.com/21109930/113525996-783b9f00-958e-11eb-9563-61b530d8fee7.png)
-<br>
+    
+<br/>
+
+![acessando pasta](https://user-images.githubusercontent.com/21109930/113527453-f9e1fb80-9593-11eb-968a-aa2ac3357713.png)
 
 <strong> 4. execute o código abaixo para baixar as dependências </strong>
 
@@ -86,18 +87,20 @@ Instalando os programas a cima citados e a pasta do projeto devidamente localiza
 
 <strong> 5. Crie um banco de dados </strong>
 
-   5.1 Acesse o database do laragon 
+5.1 Acesse o database do laragon 
 
 ![acessando database](https://user-images.githubusercontent.com/21109930/113494066-6a691980-94bb-11eb-8ca6-0418f3e2d4eb.png)
 
-    5.2 Abra o sistema para gerenciar o banco de dados
+5.2 Abra o sistema para gerenciar o banco de dados
 
 ![acessando database abrir](https://user-images.githubusercontent.com/21109930/113494085-997f8b00-94bb-11eb-8bdf-713ad63e229d.png)
 
 OBS: Caso você já tenha um SGBD instalado e configurado na sua maquina, você pode colocar o nome de usuario e senha do seu SGBD
 
-    5.3 Crie um banco de dados
 
+5.3 Crie um banco de dados
+
+![criando banco de dados](https://user-images.githubusercontent.com/21109930/113527883-5265c880-9595-11eb-8333-117799d535ea.png)
 
 <strong> 6. Na pasta do projeto, copie e cole o arquivo .env.example e renomei a copia para .env </strong>
 
@@ -123,7 +126,8 @@ Com o projeto devidamente configurado execute o comando: php artisan serve
 
 ## Acessando a Aplicacao <a name="Acessando-a-Aplicação"></a>
 Por padrão o projeto será iniciado no seguinte link:
-localhost:8000/exercicio_chronos-main/public/
+localhost:8000/exercicio_chronos-main/public/![criando banco de dados](https://user-images.githubusercontent.com/21109930/113527804-129ee100-9595-11eb-9f04-26c330fdbf1f.png)
+
 
 ![link padrao na maquina](https://user-images.githubusercontent.com/21109930/113526858-fa799280-9591-11eb-93df-81ac92902ed1.png)
 
