@@ -16,9 +16,9 @@ Sumário
         * [Dowload da Aplicacao](#Dowload_da_Aplicacao)
         * [Configurando a Aplicação](#Configurando_a_Aplicação)   
         * [Iniciando o Servidor](#Inicie-o-Servidor)
-        * [Acessando a Aplicação](#Acessando a Aplicação)
+        * [Acessando a Aplicação](#Acessando-a-Aplicação)
    * [Funcionalidades do Sistema](#Funcionalidades-do-Sistema)  
-   * [Laravel-Readme](#Implementações-de-Segurança)
+   * [Laravel-Readme](#Laravel-Readme)
 <!--te-->
 
 
@@ -55,14 +55,14 @@ Atente para que no momento de seleciona o PHP, selecione o php.exe do PHP 7.4 qu
 ![composer select php](https://user-images.githubusercontent.com/21109930/113493782-eb72e180-94b8-11eb-9fee-1f9a07699f0b.png)
 ![php selecionado composer](https://user-images.githubusercontent.com/21109930/113493786-f299ef80-94b8-11eb-87f1-8cf898cb3dbf.png)
 
-## Dowload da Aplicação
+## Dowload da Aplicação <a name="Dowload-da-Aplicacao"></a>
 Clone o projeto para pasta www do laragon através do comando: git clone, ou baixando o arquivo zip do projeto e extraindo para a pasta www do 
 No pagina do projeto: https://github.com/lucasdantas2014/desafio_chronos
 ![dowload_do_projeto_no_git](https://user-images.githubusercontent.com/21109930/113493820-355bc780-94b9-11eb-8313-6eb4d53898c8.png)
 ![Extraindo projeto para o laragon](https://user-images.githubusercontent.com/21109930/113493807-1f4e0700-94b9-11eb-9112-319ab5beaafb.png)
 
 
-## Configurando Aplicacao
+## Configurando Aplicacao <a name="Configurando-Aplicacao"></a>
 Instalando os programas a cima citados e a pasta do projeto devidamente localizada:
 
 1. Inicie o Laragon
@@ -111,19 +111,19 @@ OBS: Caso você já tenha um SGBD instalado e configurado na sua maquina, você 
 
 ![php_migrate](https://user-images.githubusercontent.com/21109930/113494185-64276d00-94bc-11eb-9c1c-dc864bbd51de.png)
 
-
-## Iniciando o Servidor
+    
+## Iniciando o Servidor <a name="Iniciando-o-Servidor"></a>
 Com o projeto devidamente configurado execute o comando: php artisan serve
 
 ![php_serve](https://user-images.githubusercontent.com/21109930/113494187-71dcf280-94bc-11eb-837b-4e6b1dbae8c0.png)
 
 
-## Acessando a aplicacao
+## Acessando a Aplicacao <a name="Acessando-a-Aplicacao"></a>
 Por padrão o projeto será iniciado no seguinte link:
 localhost:8000/desafio_chronos-main/public/
 ![link](https://user-images.githubusercontent.com/21109930/113494265-1d864280-94bd-11eb-8927-6cdf00b5ed73.png)
 
-# Funcionalidades do sistema
+# Funcionalidades do sistema <a name="Funcionalidades-do-Sistema"></a>
 ### Ver Clientes
 ![lista_de_clientes](https://user-images.githubusercontent.com/21109930/113494373-fed47b80-94bd-11eb-85a5-2074c87f90cc.png)
 
@@ -139,6 +139,7 @@ localhost:8000/desafio_chronos-main/public/
 ![remover_cliente](https://user-images.githubusercontent.com/21109930/113494390-27f50c00-94be-11eb-95b9-c36dd355415e.png)
 
 
+<a name="Laravel-Readme"></a>
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -148,7 +149,7 @@ localhost:8000/desafio_chronos-main/public/
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About Laravel 
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
