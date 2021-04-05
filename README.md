@@ -102,6 +102,11 @@ OBS: Caso você já tenha um SGBD instalado e configurado na sua maquina, você 
 
 ![criando banco de dados](https://user-images.githubusercontent.com/21109930/113527883-5265c880-9595-11eb-8333-117799d535ea.png)
 
+Insira um nome para o banco de dados da aplicação (exemplo: exercicio_chronos):
+
+![inserindo nome para o banco de dados](https://user-images.githubusercontent.com/21109930/113528228-5e9e5580-9596-11eb-8d7c-95a8305f1571.png)
+
+
 <strong> 6. Na pasta do projeto, copie e cole o arquivo .env.example e renomei a copia para .env </strong>
 
 ![arquivo env](https://user-images.githubusercontent.com/21109930/113526333-0f552680-9590-11eb-904a-ee7519265809.png)
