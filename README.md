@@ -13,10 +13,10 @@ Sumário
             * [Laragon](#Laragon)
             * [PHP](#PHP)
             * [Composer](#Composer)
-        * [Dowload da Aplicacao](#Dowload-da-Aplicacao)
-        * [Configurando a Aplicação](#Configurando-a-Aplicação)   
+        * [Dowload da Aplicacao](#Dowload_da_Aplicacao)
+        * [Configurando a Aplicação](#Configurando_a_Aplicação)   
         * [Iniciando o Servidor](#Inicie-o-Servidor)
-        * [Acessando a Aplicação](#Acessando-a-Aplicação)
+        * [Acessando a Aplicação](#Acessando a Aplicação)
    * [Funcionalidades do Sistema](#Funcionalidades-do-Sistema)  
    * [Laravel-Readme](#Implementações-de-Segurança)
 <!--te-->
