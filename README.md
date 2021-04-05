@@ -52,7 +52,7 @@ Link para a pagina de dowload: https://getcomposer.org/download/
 Link para dowload direto: https://getcomposer.org/Composer-Setup.exe
 
 Atente para que no momento de seleciona o PHP, selecione o php.exe do PHP 7.4 que foi adicionado no laragon, observe a imagem abaixo:
-![composer select php](https://user-images.githubusercontent.com/21109930/113493782-eb72e180-94b8-11eb-9fee-1f9a07699f0b.png)
+![composer select php](https://user-images.githubusercontent.com/21109930/113525694-c6e83980-958c-11eb-943e-92fba6676245.png)
 ![php selecionado composer](https://user-images.githubusercontent.com/21109930/113493786-f299ef80-94b8-11eb-87f1-8cf898cb3dbf.png)
 
 ## Dowload da Aplicação <a name="Dowload-da-Aplicacao"></a>
