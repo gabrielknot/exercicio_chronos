@@ -9,6 +9,7 @@ Em caso de dúvidas, erros ou sugestões pode enviar um email para lucas.dantas0
 Sumário
 =================
 <!--ts-->
+   * [Como testar online](#Como-testar-no-pc)
    * [Como testar no pc](#Como-testar-no-pc)
         * [Requisitos](#Requisitos)
             * [Laragon](#Laragon)
@@ -22,6 +23,9 @@ Sumário
    * [Laravel-Readme](#Laravel-Readme)
 <!--te-->
 
+ #  Como testar Online
+ 
+ A aplicação está hospedada online para ser vizualisada e testada, só é necessário acessar o seguinte link: https://desafio-chronos.000webhostapp.com/
 
  #  Como testar no pc
 
