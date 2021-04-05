@@ -58,85 +58,93 @@ Atente para que no momento de seleciona o PHP, selecione o php.exe do PHP 7.4 qu
 ## Dowload da Aplicação <a name="Dowload-da-Aplicacao"></a>
 Clone o projeto para pasta www do laragon através do comando: git clone, ou baixando o arquivo zip do projeto e extraindo para a pasta www do 
 No pagina do projeto: https://github.com/lucasdantas2014/desafio_chronos
-![dowload_do_projeto_no_git](https://user-images.githubusercontent.com/21109930/113493820-355bc780-94b9-11eb-8313-6eb4d53898c8.png)
-![Extraindo projeto para o laragon](https://user-images.githubusercontent.com/21109930/113493807-1f4e0700-94b9-11eb-9112-319ab5beaafb.png)
+
+![dowloado projeto](https://user-images.githubusercontent.com/21109930/113525983-6528cf00-958e-11eb-8301-63c5bce82233.png)
 
 
 ## Configurando Aplicacao <a name="Configurando-a-Aplicação"></a>
 Instalando os programas a cima citados e a pasta do projeto devidamente localizada:
 
-1. Inicie o Laragon
+<strong> 1. Inicie o Laragon </strong>
 
-![iniciar laragon](https://user-images.githubusercontent.com/21109930/113493846-9a172200-94b9-11eb-9c03-616e756132bf.png)
+![iniciar laragon](https://user-images.githubusercontent.com/21109930/113526711-72938880-9591-11eb-9101-c2ff81f59d77.png)
 
-2. Entre no terminal do laragon  
+<strong> 2. Entre no terminal do laragon </strong>
+
 ![acessando terminal](https://user-images.githubusercontent.com/21109930/113493994-c41d1400-94ba-11eb-8de8-c5169c1d02a5.png)
 
-3. Acesse a página do projeto
+<strong> 3. Acesse a página do projeto </strong>
+    
+    cd exercicio-chronos-main
+<br>
+![acessando pasta](https://user-images.githubusercontent.com/21109930/113525996-783b9f00-958e-11eb-9563-61b530d8fee7.png)
+<br>
 
-![acesse_a_pasta_do_projeto](https://user-images.githubusercontent.com/21109930/113494003-d39c5d00-94ba-11eb-9552-e860bd1b1031.png)
+<strong> 4. execute o código abaixo para baixar as dependências </strong>
 
-4. execute o código abaixo para baixar as dependências
+    composer install --no-scripts
 
-![composer_install](https://user-images.githubusercontent.com/21109930/113493938-625caa00-94ba-11eb-9c14-28873e37bbec.png)
+<strong> 5. Crie um banco de dados </strong>
 
-5. Na pasta do projeto, copie e cole o arquivo .env.example e renomei a copia para .env
-
-![crei o arquivo env no projeto](https://user-images.githubusercontent.com/21109930/113494013-eb73e100-94ba-11eb-99f9-66e7f5d0227d.png)
-
-6. Crie um banco de dados
-    6.1 Acesse o database do laragon
+   5.1 Acesse o database do laragon 
 
 ![acessando database](https://user-images.githubusercontent.com/21109930/113494066-6a691980-94bb-11eb-8ca6-0418f3e2d4eb.png)
 
-    6.2 Abra o sistema para gerenciar o banco de dados
+    5.2 Abra o sistema para gerenciar o banco de dados
 
 ![acessando database abrir](https://user-images.githubusercontent.com/21109930/113494085-997f8b00-94bb-11eb-8bdf-713ad63e229d.png)
 
 OBS: Caso você já tenha um SGBD instalado e configurado na sua maquina, você pode colocar o nome de usuario e senha do seu SGBD
 
-    6.3 Crie um banco de dados
+    5.3 Crie um banco de dados
 
-![selecionando a versao do php no laragon](https://user-images.githubusercontent.com/21109930/113494113-d77caf00-94bb-11eb-943c-9c4c8f300fe4.png)
 
-7. Abra o aquivo .env no editor de texto de sua preferência e coloque os dados do seu banco de dados 
+<strong> 6. Na pasta do projeto, copie e cole o arquivo .env.example e renomei a copia para .env </strong>
 
-![dados para serem ajustados](https://user-images.githubusercontent.com/21109930/113494043-2d048c00-94bb-11eb-92f3-4dc892ff551a.png)
+![arquivo env](https://user-images.githubusercontent.com/21109930/113526333-0f552680-9590-11eb-904a-ee7519265809.png)
 
-8. Execute o comando abaixo para criar uma nova chave para sua aplicação 
+<strong> 7. Abra o aquivo .env no editor de texto de sua preferência e coloque os dados do seu banco de dados </strong>
 
-![gerar_key](https://user-images.githubusercontent.com/21109930/113494156-17439680-94bc-11eb-80c8-0621a7b81e7f.png)
+![informacoes banco de dados](https://user-images.githubusercontent.com/21109930/113526297-ee8cd100-958f-11eb-9b08-63e7f123a34c.png)
 
-9. Execute o comando abaixo para que as tabelas do banco de dados sejam criadas
+<strong> 8. Novamente no terminal, execute o comando abaixo para criar uma nova chave para sua aplicação </strong>
 
-![php_migrate](https://user-images.githubusercontent.com/21109930/113494185-64276d00-94bc-11eb-9c1c-dc864bbd51de.png)
+    php artisan key:generate    
 
+<strong> 9. Execute o comando abaixo para que as tabelas do banco de dados sejam criadas</strong>
+
+    php artisan migrate
     
 ## Iniciando o Servidor <a name="Iniciando-o-Servidor"></a>
 Com o projeto devidamente configurado execute o comando: php artisan serve
 
-![php_serve](https://user-images.githubusercontent.com/21109930/113494187-71dcf280-94bc-11eb-837b-4e6b1dbae8c0.png)
+    php artisan serve
 
 
 ## Acessando a Aplicacao <a name="Acessando-a-Aplicação"></a>
 Por padrão o projeto será iniciado no seguinte link:
-localhost:8000/desafio_chronos-main/public/
-![link](https://user-images.githubusercontent.com/21109930/113494265-1d864280-94bd-11eb-8927-6cdf00b5ed73.png)
+localhost:8000/exercicio_chronos-main/public/
+
+![link padrao na maquina](https://user-images.githubusercontent.com/21109930/113526858-fa799280-9591-11eb-93df-81ac92902ed1.png)
 
 # Funcionalidades do sistema <a name="Funcionalidades-do-Sistema"></a>
 ### Ver Clientes
-![lista_de_clientes](https://user-images.githubusercontent.com/21109930/113494373-fed47b80-94bd-11eb-85a5-2074c87f90cc.png)
+![tela lista de clientes](https://user-images.githubusercontent.com/21109930/113527116-e1bdac80-9592-11eb-8a30-7c2abd41540e.png)
+
 
 ### Criar Cliente
-![cadastrar_cliente](https://user-images.githubusercontent.com/21109930/113494380-0a27a700-94be-11eb-9101-3952f6a1138b.png)
-![tela_cadastro](https://user-images.githubusercontent.com/21109930/113494432-802c0e00-94be-11eb-8350-4a754423e83c.png)
+![adicionar cliente](https://user-images.githubusercontent.com/21109930/113527136-f5691300-9592-11eb-9ecf-f484d236db74.png)
+![tela adicionar cliente](https://user-images.githubusercontent.com/21109930/113527143-fbf78a80-9592-11eb-85bf-8cf0d0ccca94.png)
+
 
 ### Editar Cliente
-![editar_cliente](https://user-images.githubusercontent.com/21109930/113494387-1c094a00-94be-11eb-87e6-f09be0205647.png)
-![tela_edicao](https://user-images.githubusercontent.com/21109930/113494444-8e7a2a00-94be-11eb-8103-80264d0cda1a.png)
+![editar cliente](https://user-images.githubusercontent.com/21109930/113527198-1fbad080-9593-11eb-90eb-efc3de6a233e.png)
+![tela editar cliente](https://user-images.githubusercontent.com/21109930/113527341-9f489f80-9593-11eb-872f-e5fc87116e76.png)
+
 
 ### Remover Cliente
-![remover_cliente](https://user-images.githubusercontent.com/21109930/113494390-27f50c00-94be-11eb-95b9-c36dd355415e.png)
+![remover clietne](https://user-images.githubusercontent.com/21109930/113527348-a8397100-9593-11eb-8877-9533bcc5c123.png)
+
 
 
 <a name="Laravel-Readme"></a>
