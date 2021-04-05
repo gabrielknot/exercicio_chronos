@@ -13,9 +13,9 @@ Sumário
             * [Laragon](#Laragon)
             * [PHP](#PHP)
             * [Composer](#Composer)
-        * [Dowload da Aplicacao](#Dowload_da_Aplicacao)
-        * [Configurando a Aplicação](#Configurando_a_Aplicação)   
-        * [Iniciando o Servidor](#Inicie-o-Servidor)
+        * [Dowload da Aplicacao](#Dowload-da-Aplicacao)
+        * [Configurando a Aplicação](#Configurando-a-Aplicação)   
+        * [Iniciando o Servidor](#Iniciando-o-Servidor)
         * [Acessando a Aplicação](#Acessando-a-Aplicação)
    * [Funcionalidades do Sistema](#Funcionalidades-do-Sistema)  
    * [Laravel-Readme](#Laravel-Readme)
@@ -62,7 +62,7 @@ No pagina do projeto: https://github.com/lucasdantas2014/desafio_chronos
 ![Extraindo projeto para o laragon](https://user-images.githubusercontent.com/21109930/113493807-1f4e0700-94b9-11eb-9112-319ab5beaafb.png)
 
 
-## Configurando Aplicacao <a name="Configurando-Aplicacao"></a>
+## Configurando Aplicacao <a name="Configurando-a-Aplicação"></a>
 Instalando os programas a cima citados e a pasta do projeto devidamente localizada:
 
 1. Inicie o Laragon
@@ -118,7 +118,7 @@ Com o projeto devidamente configurado execute o comando: php artisan serve
 ![php_serve](https://user-images.githubusercontent.com/21109930/113494187-71dcf280-94bc-11eb-837b-4e6b1dbae8c0.png)
 
 
-## Acessando a Aplicacao <a name="Acessando-a-Aplicacao"></a>
+## Acessando a Aplicacao <a name="Acessando-a-Aplicação"></a>
 Por padrão o projeto será iniciado no seguinte link:
 localhost:8000/desafio_chronos-main/public/
 ![link](https://user-images.githubusercontent.com/21109930/113494265-1d864280-94bd-11eb-8927-6cdf00b5ed73.png)
