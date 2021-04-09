@@ -61,10 +61,10 @@ Atente para que no momento de seleciona o PHP, selecione o php.exe do PHP 7.4 qu
 ![php selecionado composer](https://user-images.githubusercontent.com/21109930/113493786-f299ef80-94b8-11eb-87f1-8cf898cb3dbf.png)
 
 ## Dowload da Aplicação <a name="Dowload-da-Aplicacao"></a>
-Clone o projeto para pasta www do laragon através do comando: git clone, ou baixando o arquivo zip do projeto e extraindo para a pasta www do 
-No pagina do projeto: https://github.com/lucasdantas2014/desafio_chronos
+Baixe o projeto em arquivo zip do projeto e extraia para a pasta www do laragon, como nas imagens abaixo
 
-![dowloado projeto](https://user-images.githubusercontent.com/21109930/113525983-6528cf00-958e-11eb-8301-63c5bce82233.png)
+![dowload_projeto](https://user-images.githubusercontent.com/21109930/114237310-4abd6f80-9959-11eb-8990-1f7a81abff81.png)
+![extraindo projeto](https://user-images.githubusercontent.com/21109930/113525983-6528cf00-958e-11eb-8301-63c5bce82233.png)
 
 
 ## Configurando Aplicacao <a name="Configurando-a-Aplicação"></a>
