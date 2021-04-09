@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\EmailDuplicadoException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 use App\Models\Cliente;
 use App\Models\Hobbie;
+use Illuminate\Database\QueryException;
 
 class ClienteController extends Controller
 {
@@ -21,6 +23,7 @@ class ClienteController extends Controller
     public function show(){
 
         $clientes = Cliente::with("hobbies")->with("cidade.estado")->get();
+        $clientes->sortBy("nome");
         return response()->json($clientes->toArray());
     }
 
@@ -28,32 +31,41 @@ class ClienteController extends Controller
     public function store(Request $request){
 
         $cliente = new Cliente();
-        $cliente->nome = $request->input("nome");
-        $cliente->email = $request->input("email");
-        $cliente->cidade_id = $request->input("cidade_id");
+        try{
+            $cliente->nome = $request->input("nome");
+            $cliente->email = $request->input("email");
+            $cliente->cidade_id = $request->input("cidade_id");
 
-        $cliente->save();
-        
-        $cliente->hobbies()->attach($request->input("hobbies"));
-               
-        return response()->json([$cliente->toArray()]);
+            $cliente->save();
+            $cliente->hobbies()->attach($request->input("hobbies"));
+          
+            return response()->json([$cliente->toArray()]);
+        }catch(QueryException $e){
+            throw new EmailDuplicadoException("Cliente não pode ser cadastrado: O email inserido já está sendo utilizado");
+        }   
+       
     }
 
     // Atualizar um cliente
     public function update(Request $request){
 
-        $id_cliente = $request->input("id");
-        $cliente = Cliente::find($id_cliente);
 
-        $cliente->nome = $request->input("nome");
-        $cliente->email = $request->input("email");
-        $cliente->cidade_id = $request->input("cidade_id");
+            $id_cliente = $request->input("id");
+            $cliente = Cliente::find($id_cliente);
 
-        $cliente->save();
+            $cliente->nome = $request->input("nome");
+            $cliente->email = $request->input("email");
+            $cliente->cidade_id = $request->input("cidade_id");
+            try{
+                $cliente->save();
+            }catch(QueryException $e){
+                throw new EmailDuplicadoException("Cliente não pode ser cadastrado: O email inserido já está sendo utilizado");
+            }
+            
+            $cliente->hobbies()->sync($request->input("hobbies"));
+            
+            return response()->json([$cliente->toArray()]);
         
-        $cliente->hobbies()->sync($request->input("hobbies"));
-        
-        return response()->json([$cliente->toArray()]);
     }
 
     // Remove um cliente

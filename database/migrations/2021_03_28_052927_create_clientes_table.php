@@ -20,6 +20,7 @@ class CreateClientesTable extends Migration
             $table->unsignedBigInteger("cidade_id");
             $table->timestamps();
 
+            $table->unique("email");
             $table->foreign("cidade_id")->references("id")->on("cidades")->onUpdate("CASCADE");
         });
     }

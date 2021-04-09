@@ -31,6 +31,7 @@ Route::get("estado_id/cidades/{id}", "CidadeController@showByEstadoId")->name("a
 Route::get("estado/cidades/{nome}", "CidadeController@showByEstado")->name("api_listar_cidades_por_estado");
 
 // Hobbies Routes
+Route::get("/hobbie/{id}", "HobbieController@index")->name("api_buscar_hobbie");
 Route::get("/hobbies", "HobbieController@show")->name("api_listar_hobbies");
 Route::get("/hobbies_padrao", "HobbieController@showPadrao")->name("api_listar_hobbies_padrao");
 Route::post("/hobbie", "HobbieController@store")->name("api_inserir_hobbie");

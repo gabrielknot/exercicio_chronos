@@ -6,6 +6,11 @@
             <div class="col">                
                 <h3 class="text-center mb-3">Novo Cliente</h3>
 
+                @if ($mensagem != "")                    
+                    <div class="alert alert-danger" role="alert">
+                        {{$mensagem}}
+                    </div>
+                @endif
                 <form id="form_novo_cliente" action="{{route('novo_cliente_submit')}}" method="POST">
 
                     @csrf
@@ -16,13 +21,25 @@
                             {{-- Input Nome --}}
                             <div class="form-group">
                                 <label for="nome_novo_cliente">Nome:</label>
-                                <input type="text" name="nome" id="nome_novo_cliente" class="form-control" required>
+                                <input 
+                                    type="text"
+                                    name="nome" 
+                                    id="nome_novo_cliente" 
+                                    class="form-control" 
+                                    value="{{$cliente["nome"]}}"
+                                    required>
                             </div>
 
                             {{-- Input Email --}}
                             <div class="form-group">
                                 <label for="email_novo_cliente">Email:</label>
-                                <input type="email" name="email" id="email_novo_cliente" class="form-control" required>
+                                <input 
+                                    type="email" 
+                                    name="email" 
+                                    id="email_novo_cliente" 
+                                    class="form-control" 
+                                    value="{{$cliente["email"]}}"
+                                    required>
                             </div>
 
                             
@@ -30,7 +47,12 @@
                             <select name="estado_id" id="select_estados" required>
                                 <option selected disabled value="">Estado</option>
                                 @foreach ($estados as $estado)
-                                    <option value={{$estado["id"]}}>{{$estado["nome"]}}</option>
+                                    <option value={{$estado["id"]}}
+                                    
+                                    @if ($cliente->estado_id == $estado["id"])
+                                        selected
+                                    @endif
+                                    >{{$estado["nome"]}}</option>
                                 @endforeach    
                             </select>          
                             
@@ -38,40 +60,64 @@
                             {{-- Select - Cidades --}}
                             <select name="cidade_id" id="select_cidades" required>
                                 <option selected disabled value="">Cidade</option>
-                                @foreach ($cidades as $cidades)
-                                    <option value={{$estado["nome"]}}>{{$estado["nome"]}}</option>
+                                @foreach ($cidades as $cidade)
+                                    
+                                    <option value={{$cidade["id"]}}
+                                    @if ($cliente->cidade_id == $cidade["id"])
+                                        selected
+                                    @endif
+                                    
+                                    >{{$cidade["nome"]}}</option>
                                 @endforeach    
                             </select>       
                             
-                            {{-- Hobbies --}}
-                            <div class="form-group">
-                              <label ><strong>Hobbies:</strong></label>
-                             
-                              {{-- Hobbies padrao --}}
-                                @foreach ($hobbies as $hobbie)
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <input name={{"h" . $loop->index}} type="checkbox" value="{{$hobbie["id"]}}">
-                                            <label for="checkbox_text">{{$hobbie["nome"]}}</label>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                
-                                {{-- Checkbox - Hobbie - Outro --}}
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        
-                                        <label for="checkbox_text" class="mr-5">Outro: </label>
-                                        <input id="checkbox_outro" type="checkbox" aria-label="Checkbox for following text input" value="">
-                                    </div>
-                                    </div>
+                             {{-- Input CheckBox - Hobbies --}}
 
-                                    {{-- Input Text Hobbie Outro --}}
-                                    <input id="input_text_checkbox_outro" name="h_outro" type="text" class="form-control" aria-label="Text input with checkbox" disabled>
-                                </div>
-                            </div>
+                             <div class="form-group">
+                                <label ><strong>Hobbies:</strong></label>
+      
+                                  @foreach ($hobbies as $hobbie)
+                                     {{-- Checkbox - Hobbie - Outro --}}
+      
+                                      @if ($loop->last)
+                                            {{-- Id ultimo hobbie --}}
+                                            <input type="hidden" name="h_outro_id" value={{$hobbie["id"]}}>
+                                            
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                <div class="input-group-text">    
+                                                    <label for="checkbox_text" class="mr-5">Outro</label>
+                                                    <input id="checkbox_outro"
+                                                        type="checkbox"
+                                                        <?php if($hobbie["selected"] == true){echo "checked";} ?> 
+                                                    />
+                                                </div>
+                                                {{-- Input Text Hobbie Outro --}}
+                                                </div>
+                                                    <input id="input_text_checkbox_outro" 
+                                                        name="h_outro" 
+                                                        type="text" 
+                                                        class="form-control" 
+                                                        value="{{$hobbie["nome"]}}" 
+                                                        <?php if($hobbie["selected"] == false){echo "disabled";} ?> 
+                                                    />
+                                                </div>
+                                            </div>
 
+                                        {{-- Hobbies padrao --}}
+                                        @else
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <input 
+                                                        name={{"h" . $loop->index}} 
+                                                        type="checkbox" value="{{$hobbie["id"]}}" 
+                                                        <?php if($hobbie["selected"] == true){echo "checked";} ?> 
+                                                    />
+                                                    <label for="checkbox_text">{{$hobbie["nome"]}}</label>
+                                                </div>
+                                            </div>
+                                        @endif                                      
+                                  @endforeach
                             {{-- Botao de salvar --}}
 
                             <div class="form-group mt-1">

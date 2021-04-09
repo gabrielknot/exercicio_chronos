@@ -7,7 +7,12 @@
         <div class="row">
             <div class="col">                
                 <h3 class="text-center mb-3">Editar Cliente</h3>
-
+                
+                @if ($mensagem != "")                    
+                    <div class="alert alert-danger" role="alert">
+                        {{$mensagem}}
+                    </div>
+                @endif
                 <form id="form_novo_cliente" action="{{route("editar_cliente_submit")}}" method="POST">
                     @method("PUT")
                     @csrf
