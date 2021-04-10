@@ -27,8 +27,9 @@ Sumário
  
  A aplicação está hospedada online para ser vizualisada e testada, só é necessário acessar o seguinte link: https://desafio-chronos.000webhostapp.com/
 
- #  Como testar no pc
+ #  Como testar no pc de forma local
 
+<strong>OBS: Esse tutorial foi desenvolvido para testes em computadores com arquitetura 64 bits (principalmente os links diretos), para computadores 32 bits será necessário baixar versões compátiveis dos softwares requisitados. </strong>
  ## Requisitos
  
  
