@@ -1,12 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env sh
+set -e
 
-set -xe
-: "${DB_DATABASE?Need an api url}"
-set -xe
-: "${DB_PASSWORD?Need an api url}"
+php-fpm -D
+nginx -g 'daemon off;'
 
-sed -i "s/DB_PASSWORD/$DB_PASSWORD/g" /app/.env.example
-
-sed -i "s/DB_DATABASE/$DB_DATABASE/g" /app/.env.example
-
-exec "$@"
