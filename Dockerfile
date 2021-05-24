@@ -1,5 +1,5 @@
 FROM php:7.3-fpm
-
+ENTRYPOINT ["/entryPoint.sh"]
 COPY . /usr/share/nginx/blog
 RUN apt-get update && apt-get install -y \
     git \
