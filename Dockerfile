@@ -1,6 +1,7 @@
 FROM php:7.3-fpm
-ENTRYPOINT ["/entryPoint.sh"]
 COPY . /usr/share/nginx/blog
+RUN chmod +x /usr/share/nginx/blog/entryPoint.sh
+ENTRYPOINT ["/usr/share/nginx/blog/entryPoint.sh"]
 RUN apt-get update && apt-get install -y \
     git \
     libzip-dev \
