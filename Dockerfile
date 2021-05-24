@@ -1,5 +1,6 @@
 FROM php:7.3-fpm
 
+COPY . /usr/share/nginx/blog
 RUN apt-get update && apt-get install -y \
     git \
     libzip-dev \
