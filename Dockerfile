@@ -16,3 +16,5 @@ RUN docker-php-ext-install pdo_mysql zip
 RUN curl --silent --show-error https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
 CMD ["supervisord","-n","-c","/etc/supervisord.conf"]
+#CMD ["nginx"]
+#CMD ["php-fpm"]
