@@ -4,12 +4,8 @@ RUN apt-get update && apt-get install -y \
     git \
     libzip-dev \
     zip \
-    unzip \
-    nginx \
-    supervisor
+    unzip 
 
-COPY /docker/nginx/conf.d/default.conf /etc/default.conf
-COPY supervisord.conf /etc/supervisord.conf 
 COPY www.conf /etc/php-fpm.d/www.conf
 RUN docker-php-ext-configure zip --with-libzip
 
@@ -19,4 +15,4 @@ RUN curl --silent --show-error https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
 #CMD ["supervisord","-n","-c","/etc/supervisord.conf"]
 #CMD ["nginx"]
-#CMD ["php-fpm"]
+#CMD ["php-fpm","-F","--fpm-config=/etc/php-fpm.d/www.conf"]

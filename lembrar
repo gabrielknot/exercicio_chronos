@@ -1,0 +1,4 @@
+configure nginx following: https://www.thegeekstuff.com/2013/12/nginx-php-fpm/
+configure system environment variables in the php configmap or secret
+install and configure secret mysql and bitnami helm chart
+
