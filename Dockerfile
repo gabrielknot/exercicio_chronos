@@ -1,5 +1,11 @@
-FROM php:7.3-fpm
+FROM composer as build
+WORKDIR /usr/share/nginx/blog
 COPY . /usr/share/nginx/blog
+RUN composer install
+
+FROM php:7.3-fpm
+WORKDIR /usr/share/nginx/blog
+COPY --from=build /usr/share/nginx/blog /usr/share/nginx/blog
 RUN apt-get update && apt-get install -y \
     git \
     libzip-dev \
