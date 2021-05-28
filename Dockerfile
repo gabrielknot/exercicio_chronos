@@ -1,2 +1,2 @@
-FROM debian
-COPY . /app
+FROM alpine
+COPY . /html
