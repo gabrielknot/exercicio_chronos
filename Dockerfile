@@ -1,2 +1,2 @@
 FROM debian
-COPY . /html
+COPY . /www
