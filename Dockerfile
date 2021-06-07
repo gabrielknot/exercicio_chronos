@@ -27,8 +27,8 @@ COPY site_php.conf /usr/local/etc/php-fpm.d/www.conf
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 USER www-data
-COPY --from=builder /app /app
-WORKDIR /app
-#RUN printf "<?php\nphpinfo();\n?>" > /app/public/index.php
-RUN chmod -R 777 /app
+COPY --from=builder /app /www
+WORKDIR /www
+#RUN printf "<?php\nphpinfo();\n?>" > /www/public/index.php
+RUN chmod -R 777 /www
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
