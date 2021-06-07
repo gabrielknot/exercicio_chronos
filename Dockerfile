@@ -4,8 +4,6 @@ WORKDIR /app
 RUN composer install
 
 FROM php:7.4-fpm
-COPY --from=builder /app /var/www
-WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -23,6 +21,14 @@ RUN apt-get update && apt-get install -y \
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 COPY supervisord.conf /etc/supervisor/conf.d/php_nginx.conf
+COPY site_nginx.conf /etc/nginx/sites-enabled/default
+COPY site_php.conf /usr/local/etc/php-fpm.d/www.conf
+
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+USER www-data
+COPY --from=builder /app /app
+WORKDIR /app
+#RUN printf "<?php\nphpinfo();\n?>" > /app/public/index.php
+RUN chmod -R 777 /app
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
