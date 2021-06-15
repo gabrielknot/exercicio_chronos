@@ -33,6 +33,7 @@
         container('helm') {
           // Deploy using Helm chart
           sh "helm install app laravel-app/"
+	  sh "echo $?"
         }
      }
 }
