@@ -25,13 +25,8 @@ spec:
 
     stage('Build Docker image') {
       container('docker') {
-	    withDockerRegistry([credentialsId: 'dockerHub', url: ""]) {
-		sh "docker build -t ${image} ."
-	     }
+        sh "docker build -t ${image} ."
       }
-                  }
-    }
-
     }
   }
 }
@@ -39,3 +34,4 @@ spec:
 // 
 // Rather than inline YAML, you could use: yaml: readTrusted('jenkins-pod.yaml')
 // Or, to avoid YAML: containers: [containerTemplate(name: 'maven', image: 'maven:3.6.3-jdk-8', command: 'sleep', args: 'infinity')]
+
