@@ -25,9 +25,9 @@ spec:
 
     stage('Build Docker image') {
           gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-          DOCKER_HUB_USER = gabrileknot
-          DOCKER_IMAGE = php_nginx
-          DOCKER_IMAGE_REPO = "${DOCKER_HUB_USER }/${DOCKER_IMAGE}"
+          // DOCKER_HUB_USER = gabrileknot
+          // DOCKER_IMAGE = php_nginx
+          // DOCKER_IMAGE_REPO = "${DOCKER_HUB_USER }/${DOCKER_IMAGE}"
       container('docker') {
         sh "docker build -t ${image} ."
       }
