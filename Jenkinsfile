@@ -45,6 +45,7 @@
      }
   }
 }
+}
 
 // 
 // Rather than inline YAML, you could use: yaml: readTrusted('jenkins-pod.yaml')
