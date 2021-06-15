@@ -16,6 +16,18 @@ spec:
       path: /var/run/docker.sock
 """
   ) {
+    node(POD_LABEL) {
+podTemplate(label: 'builder',
+            containers: [
+                    containerTemplate(name: 'jnlp', image: 'larribas/jenkins-jnlp-slave-with-ssh:1.0.0', args: '${computer.jnlpmac} ${computer.name}'),
+                    containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
+                    containerTemplate(name: 'kubectl', image: 'ceroic/kubectl', command: 'cat', ttyEnabled: true),
+            ],
+            volumes: [
+                    hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
+                    secretVolume(secretName: 'maven-settings', mountPath: '/root/.m2'),
+                    secretVolume(secretName: 'kubeconfig', mountPath: '/root/kubeconfig'),
+            ]) {
 
   def image = "gabrielknot/php_nginx"
   def DOCKER_HUB_USER = "gabrileknot"
@@ -36,6 +48,7 @@ spec:
       }
     }
   }
+}
 }
 
 // 
