@@ -1,0 +1,117 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "laravel-app.fullname" . }}
+  labels:
+    {{- include "laravel-app.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "laravel-app.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "laravel-app.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "laravel-app.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: {{ .Release.Name }}-app-shared-data
+          emptyDir: {}
+        - name: {{ .Release.Name }}-nginx-configmap
+          configMap:
+            defaultMode: 256
+            name: {{ .Release.Name }}-nginx-configmap
+            optional: false
+        - name: {{ .Release.Name }}-php-fpm-configmap
+          configMap:
+            defaultMode: 256
+            name: {{ .Release.Name }}-php-fpm-configmap
+            optional: false
+      initContainers:
+        - name: creating-ephemeral-volume
+          image: "{{ .Values.image.repository }}"
+          envFrom:
+            - configMapRef:
+                name: {{ .Release.Name }}-php-configmap
+          volumeMounts:
+            - name: {{ .Release.Name }}-app-shared-data
+              mountPath: /www
+          args: ["/bin/mv","/app","/www"]
+        - name: config-cache
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          volumeMounts:
+            - name: {{ .Release.Name }}-app-shared-data
+              mountPath: /www
+          workingDir: /www/app
+          envFrom:
+            - configMapRef:
+                name: {{ .Release.Name }}-php-configmap
+          args: ["php","artisan","config:cache"]
+        - name: migrate
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          volumeMounts:
+            - name: {{ .Release.Name }}-app-shared-data
+              mountPath: /www
+          workingDir: /www/app
+          envFrom:
+            - configMapRef:
+                name: {{ .Release.Name }}-php-configmap
+          args: ["php","artisan","migrate"]
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          volumeMounts:
+            - name: {{ .Release.Name }}-php-fpm-configmap 
+              mountPath: /usr/local/etc/php-fpm.d
+              name: {{ .Release.Name }}-php-fpm-configmap 
+            - name: {{ .Release.Name }}-nginx-configmap 
+              mountPath: /etc/nginx/conf.d
+              name: {{ .Release.Name }}-nginx-configmap 
+            - name: {{ .Release.Name }}-app-shared-data
+              mountPath: /www
+          workingDir: /www/app
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: {{ .Release.Name }}-php-configmap
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
