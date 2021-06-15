@@ -1,34 +1,13 @@
-podTemplate(yaml: """
-apiVersion: v1
-kind: Pod
-spec:
-  containers:
-  - name: docker
-    image: docker:1.11
-    command: ['cat']
-    tty: true
-    volumeMounts:
-    - name: dockersock
-      mountPath: /var/run/docker.sock
-  volumes:
-  - name: dockersock
-    hostPath:
-      path: /var/run/docker.sock
-"""
-  ) {
-    node(POD_LABEL) {
-podTemplate(label: 'builder',
-            containers: [
-                    containerTemplate(name: 'jnlp', image: 'larribas/jenkins-jnlp-slave-with-ssh:1.0.0', args: '${computer.jnlpmac} ${computer.name}'),
-                    containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
-                    containerTemplate(name: 'kubectl', image: 'ceroic/kubectl', command: 'cat', ttyEnabled: true),
-            ],
-            volumes: [
-                    hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
-                    secretVolume(secretName: 'maven-settings', mountPath: '/root/.m2'),
-                    secretVolume(secretName: 'kubeconfig', mountPath: '/root/kubeconfig'),
-            ]) {
-
+podTemplate(
+    label: LABEL_ID,
+    containers: [
+        containerTemplate(args: 'cat', name: 'docker-container', command: '/bin/sh -c', image: 'docker', ttyEnabled: true),
+        containerTemplate(args: 'cat', command: '/bin/sh -c', image: 'lachlanevenson/k8s-helm:v3.5.2', name: 'helm-container', ttyEnabled: true)
+    ],
+    volumes: [
+        hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')
+    ]
+) {
   def image = "gabrielknot/php_nginx"
   def DOCKER_HUB_USER = "gabrileknot"
   def DOCKER_IMAGE = "php_nginx"
@@ -48,7 +27,6 @@ podTemplate(label: 'builder',
       }
     }
   }
-}
 }
 
 // 
