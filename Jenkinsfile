@@ -19,10 +19,6 @@ spec:
 
   def image = "jenkins/jnlp-slave"
   node(POD_LABEL) {
-    stage('Build Docker image') {
-      container('docker') {
-        sh "docker build -t ${image} ."
-      }
     stage('Build docker image') {
 	
 	gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
