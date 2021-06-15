@@ -31,8 +31,6 @@ spec:
       container('docker') {
         withDockerRegistry([credentialsId: 'dockerHub', url: ""]) {
 	   sh "docker build . -t ${image}:${gitCommit}"
-           sh "docker push ${image}:${gitCommit}"
-           sh "docker push ${image}:latest"
       }
     }
   }
