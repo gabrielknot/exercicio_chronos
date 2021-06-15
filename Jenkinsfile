@@ -27,9 +27,11 @@ spec:
     }
 
     stage('Build Docker image') {
-          gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+      gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
       container('docker') {
-        sh "docker build -t ${image} ."
+        withDockerRegistry([credentialsId: 'ecr:eu-west-1:AWS ECR', url: "https://${DOCKER_IMAGE_REPO}"]) {
+           sh "docker build -t ${image} ."
+	}
       }
     }
   }
