@@ -30,11 +30,9 @@ spec:
       gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
       container('docker') {
         withDockerRegistry([credentialsId: 'dockerHub', url: ""]) {
-	   sh "docker build . -t ${serviceName}:${gitCommit}"
-           sh "docker tag ${serviceName}:${gitCommit} ${DOCKER_IMAGE_REPO}:${gitCommit}"
-           sh "docker tag ${serviceName}:${gitCommit} ${DOCKER_IMAGE_REPO}:latest"
-           sh "docker push ${DOCKER_IMAGE_REPO}:${gitCommit}"
-           sh "docker push ${DOCKER_IMAGE_REPO}:latest"
+	   sh "docker build . -t ${image}:${gitCommit}"
+           sh "docker push ${image}:${gitCommit}"
+           sh "docker push ${image}:latest"
       }
     }
   }
