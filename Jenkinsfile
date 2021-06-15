@@ -19,11 +19,12 @@ spec:
 
   def image = "gabrielknot/php_nginx"
   node(POD_LABEL) {
+    stage('Checkout') {
+	checkout scm
+    }
+
     stage('Build Docker image') {
-        sh "git clone https://github.com/gabrielknot/exercicio_chronos"
       container('docker') {
-	sh "cd exercicio_chronos"
-        sh "ls"
         sh "docker build -t ${image} ."
       }
     }
