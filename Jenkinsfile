@@ -1,31 +1,17 @@
 // Build a Maven project using the standard image and Scripted syntax.
 // Rather than inline YAML, you could use: yaml: readTrusted('jenkins-pod.yaml')
 // Or, to avoid YAML: containers: [containerTemplate(name: 'maven', image: 'maven:3.6.3-jdk-8', command: 'sleep', args: 'infinity')]
-podTemplate(yaml: '''
-apiVersion: v1
-kind: Pod
-spec:
-  containers:
-  - name: maven
-    image: maven:3.6.3-jdk-8
-    command:
-    - sleep
-    args:
-    - infinity
-''') {
+pipeline {
     node(POD_LABEL) {
 podTemplate(label: 'builder',
             containers: [
                     containerTemplate(name: 'jnlp', image: 'larribas/jenkins-jnlp-slave-with-ssh:1.0.0', args: '${computer.jnlpmac} ${computer.name}'),
                     containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
                     containerTemplate(name: 'kubectl', image: 'ceroic/kubectl', command: 'cat', ttyEnabled: true),
-                    containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine', ttyEnabled: true, command: 'cat')
             ],
             volumes: [
                     hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
-                    secretVolume(secretName: 'maven-settings', mountPath: '/root/.m2'),
                     secretVolume(secretName: 'kubeconfig', mountPath: '/root/kubeconfig'),
-                    persistentVolumeClaim(claimName: 'mavenrepo-volume-claim', mountPath: '/root/.m2nrepo')
             ]) {
 
         node('builder') {
@@ -52,3 +38,4 @@ podTemplate(label: 'builder',
             }
         }
     }
+}
