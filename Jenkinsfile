@@ -19,15 +19,15 @@
 	checkout scm
     }
 
-    stage('Build Docker image') {
-      gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-      container('docker') {
-        withDockerRegistry([credentialsId: 'dockerHub', url: ""]) {
-           sh "docker build -t ${image}:${gitCommit} ."
-           sh "docker push ${image}:${gitCommit}"
-	}
-      }
-    }
+    // stage('Build Docker image') {
+    //   gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+    //   container('docker') {
+    //     withDockerRegistry([credentialsId: 'dockerHub', url: ""]) {
+    //        sh "docker build -t ${image}:${gitCommit} ."
+    //        sh "docker push ${image}:${gitCommit}"
+    //     }
+    //   }
+    // }
       stage ('deploy to k8s') {
 	gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
         container('helm') {
