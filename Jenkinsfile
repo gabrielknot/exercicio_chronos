@@ -18,6 +18,9 @@ spec:
   ) {
 
   def image = "gabrielknot/php_nginx"
+  def DOCKER_HUB_USER = gabrileknot
+  def DOCKER_IMAGE = php_nginx
+  def DOCKER_IMAGE_REPO = "${DOCKER_HUB_USER }/${DOCKER_IMAGE}"
   node(POD_LABEL) {
     stage('Checkout') {
 	checkout scm
@@ -25,9 +28,6 @@ spec:
 
     stage('Build Docker image') {
           gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-          // DOCKER_HUB_USER = gabrileknot
-          // DOCKER_IMAGE = php_nginx
-          // DOCKER_IMAGE_REPO = "${DOCKER_HUB_USER }/${DOCKER_IMAGE}"
       container('docker') {
         sh "docker build -t ${image} ."
       }
