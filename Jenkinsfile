@@ -28,7 +28,6 @@
 	}
       }
     }
-    if (env.BRANCH_NAME == 'main') {
       stage ('deploy to k8s') {
 	gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
         container('helm') {
@@ -43,7 +42,6 @@
           )
         }
      }
-  }
 }
 }
 
