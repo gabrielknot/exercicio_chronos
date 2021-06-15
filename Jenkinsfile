@@ -1,5 +1,4 @@
 podTemplate(
-    label: docker,
     containers: [
         containerTemplate(args: 'cat', name: 'docker', command: '/bin/sh -c', image: 'docker', ttyEnabled: true),
         containerTemplate(args: 'cat', command: '/bin/sh -c', image: 'lachlanevenson/k8s-helm:v3.5.2', name: 'helm', ttyEnabled: true)
