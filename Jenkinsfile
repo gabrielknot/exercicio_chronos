@@ -22,6 +22,7 @@ spec:
     stage('Build Docker image') {
       git 'https://github.com/gabrielknot/exercicio_chronos.git'
       container('docker') {
+        sh "ls"
         sh "docker build -t ${image} ."
       }
     }
