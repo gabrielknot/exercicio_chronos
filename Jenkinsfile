@@ -25,7 +25,7 @@ spec:
       }
     stage('Build docker image') {
 	
-        git 'https://github.com/gabrielknot/exercicio_chronos.git'
+	gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
 	DOCKER_HUB_USER = gabrileknot
 	DOCKER_IMAGE = php_nginx
 	DOCKER_IMAGE_REPO = "${DOCKER_HUB_USER }/${DOCKER_IMAGE}"
@@ -45,6 +45,6 @@ spec:
   }
 }
 
-// gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+// git 'https://github.com/gabrielknot/exercicio_chronos.git'
 // Rather than inline YAML, you could use: yaml: readTrusted('jenkins-pod.yaml')
 // Or, to avoid YAML: containers: [containerTemplate(name: 'maven', image: 'maven:3.6.3-jdk-8', command: 'sleep', args: 'infinity')]
