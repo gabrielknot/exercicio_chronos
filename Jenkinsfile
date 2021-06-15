@@ -28,6 +28,22 @@
 	}
       }
     }
+    if (env.BRANCH_NAME == 'master') {
+      stage ('deploy to k8s') {
+	gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+        container('helm') {
+          // Deploy using Helm chart
+          pipeline.helmDeploy(
+            dry_run       : false,
+            name          : app,
+            namespace     : default,
+            chart_dir     : laravel-app,
+            set           : [
+              "imageTag": gitCommit,
+            ]
+          )
+        }
+     }
   }
 }
 
