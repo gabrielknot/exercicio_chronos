@@ -20,8 +20,7 @@ spec:
   def image = "gabrielknot/php_nginx"
   node(POD_LABEL) {
     stage('Build Docker image') {
-      git url:'https://github.com/javahometech/myweb', branch: "*/main"
-      git 'https://github.com/gabrielknot/exercicio_chronos/'
+      git url:'https://github.com/gabrielknot/exercicio_chronos/', branch: "*/main"
       container('docker') {
         sh "ls"
         sh "docker build -t ${image} ."
