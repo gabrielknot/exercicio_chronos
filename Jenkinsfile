@@ -36,7 +36,6 @@
           pipeline.helmDeploy(
             dry_run       : false,
             name          : app,
-            namespace     : default,
             chart_dir     : laravel-app,
             set           : [
               "imageTag": gitCommit,
