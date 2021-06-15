@@ -35,10 +35,10 @@
           pipeline.helmDeploy(
             dry_run       : false,
             name          : app,
-            chart_dir     : laravel-app,
-            set           : [
-              "imageTag": gitCommit,
-            ]
+            chart_dir     : laravel-app
+            // set           : [
+            //   "imageTag": gitCommit,
+            // ]
           )
         }
      }
