@@ -19,24 +19,10 @@ spec:
 
   def image = "jenkins/jnlp-slave"
   node(POD_LABEL) {
-    stage('Build docker image') {
-	
-	gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-	DOCKER_HUB_USER = gabrileknot
-	DOCKER_IMAGE = php_nginx
-	DOCKER_IMAGE_REPO = "${DOCKER_HUB_USER }/${DOCKER_IMAGE}"
-	container('docker') {
-	    withDockerRegistry([credentialsId: 'ecr:eu-west-1:AWS ECR', url: "https://${DOCKER_IMAGE_REPO}"]) {
-		sh "docker build . -t ${serviceName}:${gitCommit}"
-		sh "docker tag ${serviceName}:${gitCommit} ${DOCKER_IMAGE_REPO}:${gitCommit}"
-		sh "docker tag ${serviceName}:${gitCommit} ${DOCKER_IMAGE_REPO}:latest"
-		sh "docker push ${DOCKER_IMAGE_REPO}:${gitCommit}"
-		sh "docker push ${DOCKER_IMAGE_REPO}:latest"
-		slackSend color: '#4CAF50', message: "New version of ${serviceName}:${gitCommit} pushed to ECR!"
-	    }
-
-	}
-    }
+    stage('Build Docker image') {
+      container('docker') {
+        sh "docker build -t ${image} ."
+      }
     }
   }
 }
