@@ -33,7 +33,6 @@
 	gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
         container('helm') {
 	  sh '''
-            helm upgrade --install 
 	    DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep DEPLOYED |wc -l)
             if [ $DEPLOYED == 0 ] ; then
               helm install app --set image.tag=${gitCommit} laravel-app/
