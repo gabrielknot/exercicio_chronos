@@ -1,4 +1,5 @@
  podTemplate(
+    serviceAccount 'jenkins-account'
     containers: [
         containerTemplate(args: 'cat', name: 'docker', command: '/bin/sh -c', image: 'docker', ttyEnabled: true),
         containerTemplate(args: 'cat', command: '/bin/sh -c', image: 'lachlanevenson/k8s-helm:v3.5.2', name: 'helm', ttyEnabled: true),
@@ -19,21 +20,27 @@
 	checkout scm
     }
 
-    // stage('Build Docker image') {
-    //   gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-    //   container('docker') {
-    //     withDockerRegistry([credentialsId: 'dockerHub', url: ""]) {
-    //        sh "docker build -t ${image}:${gitCommit} ."
-    //        sh "docker push ${image}:${gitCommit}"
-    //     }
-    //   }
-    // }
+      stage('Build Docker image') {
+        gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+        container('docker') {
+          withDockerRegistry([credentialsId: 'dockerHub', url: ""]) {
+             sh "docker build -t ${image}:${gitCommit} ."
+             sh "docker push ${image}:${gitCommit}"
+          }
+        }
+      }
       stage ('deploy to k8s') {
 	gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
         container('helm') {
-          // Deploy using Helm chart
 	  sh """
-            helm upgrade --install --set image.tag=${gitCommit}
+            helm upgrade --install 
+	    DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep DEPLOYED |wc -l)
+            if [ $DEPLOYED == 0 ] ; then
+              helm install --name app --set image.tag=${gitCommit} laravel-app/
+            else
+              helm upgrade app --set image.tag=${gitCommit} laravel-app/
+            fi
+            echo "deployed!"
         """
         }
      }
