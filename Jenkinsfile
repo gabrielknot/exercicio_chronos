@@ -32,7 +32,7 @@
       stage ('deploy to k8s') {
 	gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
         container('helm') {
-	  sh """
+	  sh '''
             helm upgrade --install 
 	    DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep DEPLOYED |wc -l)
             if [ $DEPLOYED == 0 ] ; then
@@ -41,7 +41,7 @@
               helm upgrade app --set image.tag=${gitCommit} laravel-app/
             fi
             echo "deployed!"
-        """
+            '''
         }
      }
 }
