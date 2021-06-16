@@ -36,7 +36,7 @@
             helm upgrade --install 
 	    DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep DEPLOYED |wc -l)
             if [ $DEPLOYED == 0 ] ; then
-              helm install --name app --set image.tag=${gitCommit} laravel-app/
+              helm install app --set image.tag=${gitCommit} laravel-app/
             else
               helm upgrade app --set image.tag=${gitCommit} laravel-app/
             fi
