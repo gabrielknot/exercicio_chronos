@@ -32,7 +32,9 @@
 	gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
         container('helm') {
           // Deploy using Helm chart
-          sh "helm install app laravel-app/"
+	  sh """
+            helm upgrade --install --set image.tag=${gitCommit}
+        """
         }
      }
 }
