@@ -11,9 +11,6 @@
     ]
 ) {
   def image = "gabrielknot/php_nginx"
-  def DOCKER_HUB_USER = gabrielknot
-  def DOCKER_IMAGE = "php_nginx"
-  def DOCKER_IMAGE_REPO = "${DOCKER_HUB_USER }/${DOCKER_IMAGE}"
   node(POD_LABEL) {
     stage('Checkout') {
 	checkout scm
