@@ -29,9 +29,8 @@
       }
       stage ('deploy to k8s') {
         container('helm') {
-	  sh "DEPLOYED=$(helm list |grep -E "^app" |grep DEPLOYED |wc -l)"
-          sh "[ $DEPLOYED == 0 ] && helm install app --set image.tag="${shortCommit}" laravel-app/"
-          sh "[ $DEPLOYED == 1 ] && helm upgrade app --set image.tag="${COMMIT}" laravel-app/"
+          sh "helm install app --set image.tag="${shortCommit}" laravel-app/"
+          // sh "helm upgrade app --set image.tag="${COMMIT}" laravel-app/"
           sh "echo "deployed!""
         }
      }
