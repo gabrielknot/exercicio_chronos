@@ -29,17 +29,10 @@
       }
       stage ('deploy to k8s') {
         container('helm') {
-	  sh '''
-	    echo $gitCommit
-	    DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep DEPLOYED |wc -l)
-	    COMMIT=$(echo "$shortCommit")
-            if [ $DEPLOYED == 0 ] ; then
-              helm install app --set image.tag="${COMMIT}" laravel-app/
-            else
-              helm upgrade app --set image.tag="${COMMIT}" laravel-app/
-            fi
-            echo "deployed!"
-            '''
+	  sh "DEPLOYED=$(helm list |grep -E "^app" |grep DEPLOYED |wc -l)"
+          sh "[ $DEPLOYED == 0 ] && helm install app --set image.tag="${shortCommit}" laravel-app/"
+          sh "[ $DEPLOYED == 1 ] && helm upgrade app --set image.tag="${COMMIT}" laravel-app/"
+          sh "echo "deployed!""
         }
      }
 }
