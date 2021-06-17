@@ -11,7 +11,7 @@
     ]
 ) {
   def image = "gabrielknot/php_nginx"
-  def gitCommit = gitCommit=$(git rev-parse HEAD)  
+  def gitCommit = $(git rev-parse HEAD)  
   def DOCKER_IMAGE = "php_nginx"
   def DOCKER_IMAGE_REPO = "${DOCKER_HUB_USER }/${DOCKER_IMAGE}"
   node(POD_LABEL) {
