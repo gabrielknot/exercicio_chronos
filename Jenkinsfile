@@ -11,7 +11,6 @@
     ]
 ) {
   def image = "gabrielknot/php_nginx"
-  def gitCommit = $(git rev-parse HEAD)  
   def DOCKER_IMAGE = "php_nginx"
   def DOCKER_IMAGE_REPO = "${DOCKER_HUB_USER }/${DOCKER_IMAGE}"
   node(POD_LABEL) {
@@ -23,8 +22,8 @@
         container('docker') {
           withDockerRegistry([credentialsId: 'dockerHub', url: ""]) {
 	     sh echo "$(git rev-parse HEAD)"
-             sh "docker build -t ${image}:${git rev-parse HEAD} ."
-             sh "docker push ${image}:${git rev-parse HEAD}"
+             sh "docker build -t ${image}:${env.GIT_COMMIT} ."
+             sh "docker push ${image}:${env.GIT_COMMIT}"
           }
         }
       }
@@ -34,9 +33,9 @@
 	    echo $gitCommit
 	    DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep DEPLOYED |wc -l)
             if [ $DEPLOYED == 0 ] ; then
-              helm install app --set image.tag=${git rev-parse HEAD} laravel-app/
+              helm install app --set image.tag=${env.GIT_COMMIT} laravel-app/
             else
-              helm upgrade app --set image.tag=${gitCommit} laravel-app/
+              helm upgrade app --set image.tag=${env.GIT_COMMIT} laravel-app/
             fi
             echo "deployed!"
             '''
