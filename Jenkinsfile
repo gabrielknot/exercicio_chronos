@@ -15,13 +15,15 @@
     stage('Checkout') {
 	checkout scm
     }
-
+	gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+	// short SHA, possibly better for chat notifications, etc.
+	shortCommit = gitCommit.take(6)
       stage('Build Docker image') {
         container('docker') {
           withDockerRegistry([credentialsId: 'dockerHub', url: ""]) {
-	     sh "echo $GIT_COMMIT"
-             sh "docker build -t ${image}:${env.GIT_COMMIT} ."
-             sh "docker push ${image}:${env.GIT_COMMIT}"
+	     sh "echo $shortCommit"
+             sh "docker build -t ${image}:${shortCommit} ."
+             sh "docker push ${image}:${shortCommit}"
           }
         }
       }
@@ -31,9 +33,9 @@
 	    echo $gitCommit
 	    DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep DEPLOYED |wc -l)
             if [ $DEPLOYED == 0 ] ; then
-              helm install app --set image.tag=${env.GIT_COMMIT} laravel-app/
+              helm install app --set image.tag=${shortCommit} laravel-app/
             else
-              helm upgrade app --set image.tag=${env.GIT_COMMIT} laravel-app/
+              helm upgrade app --set image.tag=${shortCommit} laravel-app/
             fi
             echo "deployed!"
             '''
