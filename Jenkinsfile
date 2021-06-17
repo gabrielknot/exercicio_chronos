@@ -32,10 +32,11 @@
 	  sh '''
 	    echo $gitCommit
 	    DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep DEPLOYED |wc -l)
+	    COMMIT=$(echo "$shortCommit")
             if [ $DEPLOYED == 0 ] ; then
-              helm install app --set image.tag="${shortCommit}" laravel-app/
+              helm install app --set image.tag="${COMMIT}" laravel-app/
             else
-              helm upgrade app --set image.tag="${shortCommit}" laravel-app/
+              helm upgrade app --set image.tag="${COMMIT}" laravel-app/
             fi
             echo "deployed!"
             '''
