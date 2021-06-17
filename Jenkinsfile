@@ -20,21 +20,20 @@
     }
 
       stage('Build Docker image') {
-        gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
         container('docker') {
           withDockerRegistry([credentialsId: 'dockerHub', url: ""]) {
-             sh "docker build -t ${image}:${gitCommit} ."
-             sh "docker push ${image}:${gitCommit}"
+	     sh echo "$(git rev-parse HEAD)"
+             sh "docker build -t ${image}:${git rev-parse HEAD} ."
+             sh "docker push ${image}:${git rev-parse HEAD}"
           }
         }
       }
       stage ('deploy to k8s') {
-	gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
         container('helm') {
 	  sh '''
 	    DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep DEPLOYED |wc -l)
             if [ $DEPLOYED == 0 ] ; then
-              helm install app --set image.tag=${gitCommit} laravel-app/
+              helm install app --set image.tag=${git rev-parse HEAD} laravel-app/
             else
               helm upgrade app --set image.tag=${gitCommit} laravel-app/
             fi
