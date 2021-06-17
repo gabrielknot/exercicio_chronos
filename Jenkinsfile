@@ -21,7 +21,6 @@
       stage('Build Docker image') {
         container('docker') {
           withDockerRegistry([credentialsId: 'dockerHub', url: ""]) {
-	     sh echo "$(git rev-parse HEAD)"
              sh "docker build -t ${image}:${env.GIT_COMMIT} ."
              sh "docker push ${image}:${env.GIT_COMMIT}"
           }
