@@ -29,7 +29,8 @@
       }
       stage ('deploy to k8s') {
         container('helm') {
-          sh "helm install app --set image.tag="${shortCommit}" laravel-app/"
+	  sh "helm upgrade --install app --set image.tag='${shortCommit}' laravel-app/"
+          // sh "helm install app --set image.tag="${shortCommit}" laravel-app/"
           // sh "helm upgrade app --set image.tag="${COMMIT}" laravel-app/"
           sh "echo "deployed!""
         }
