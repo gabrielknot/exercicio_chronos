@@ -11,7 +11,7 @@
     ]
 ) {
   def image = "gabrielknot/php_nginx"
-  def DOCKER_HUB_USER = "gabrileknot"
+  def gitCommit = gitCommit=$(git rev-parse HEAD)  
   def DOCKER_IMAGE = "php_nginx"
   def DOCKER_IMAGE_REPO = "${DOCKER_HUB_USER }/${DOCKER_IMAGE}"
   node(POD_LABEL) {
@@ -31,6 +31,7 @@
       stage ('deploy to k8s') {
         container('helm') {
 	  sh '''
+	    echo $gitCommit
 	    DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep DEPLOYED |wc -l)
             if [ $DEPLOYED == 0 ] ; then
               helm install app --set image.tag=${git rev-parse HEAD} laravel-app/
